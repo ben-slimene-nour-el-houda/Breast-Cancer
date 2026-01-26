@@ -34,4 +34,13 @@ The repository is organized into **three main modules** based on biological data
 
 ### 3. 📄 Pathology Report (`pathology_report/`)
 
-*(Clinical report text embeddings for retrieval tasks)*
+**Data Types:**  
+- **Clinical Text Reports:** Free-text pathology notes, histology descriptions, and biopsy findings  
+- **Structured Metadata:** Patient IDs, sample IDs, slide images, and report dates  
+- **Image Data:** Associated microscopy or histopathology images  
+
+**Models & Techniques:**  
+- **CLIP (openai/clip-vit-base-patch32):** Generates multimodal embeddings for pathology images, enabling image-text retrieval  
+- **Text Preprocessing:** Tokenization, cleaning, and normalization of report text  
+- **Vector Database (Qdrant):** Stores 512-dim image and text embeddings for semantic search and similarity queries  
+- **Multimodal Retrieval:** Allows searching for patients or slides using text queries, image queries, or combined embeddings  
