@@ -31,16 +31,19 @@ The repository is organized into **three main modules** based on biological data
   - **all-MiniLM-L6-v2:** Sentence transformer producing 384-dim vectors for Qdrant search  
 
 ---
-
 ### 3. 📄 Pathology Report (`pathology_report/`)
 
-**Data Types:**  
-- **Clinical Text Reports:** Free-text pathology notes, histology descriptions, and biopsy findings  
-- **Structured Metadata:** Patient IDs, sample IDs, slide images, and report dates  
-- **Image Data:** Associated microscopy or histopathology images  
+**Data Types:**
 
-**Models & Techniques:**  
-- **CLIP (openai/clip-vit-base-patch32):** Generates multimodal embeddings for pathology images, enabling image-text retrieval  
-- **Text Preprocessing:** Tokenization, cleaning, and normalization of report text  
-- **Vector Database (Qdrant):** Stores 512-dim image and text embeddings for semantic search and similarity queries  
-- **Multimodal Retrieval:** Allows searching for patients or slides using text queries, image queries, or combined embeddings  
+- **Clinical text reports:** pathology notes, histology descriptions, biopsy findings
+- **Structured metadata:** patient IDs, sample IDs, slide images, report dates
+- **Image data:** microscopy or histopathology images
+
+**Models & Techniques:**
+
+- **CLIP (`openai/clip-vit-base-patch32`):** génère des embeddings multimodaux pour les images de pathologie
+- **Text preprocessing:** tokenisation et nettoyage des textes des rapports
+- **Vector database (Qdrant):** stockage des embeddings 512-dim pour recherche sémantique
+- **Multimodal retrieval:** recherche par texte, image ou embeddings combinés
+
+  
