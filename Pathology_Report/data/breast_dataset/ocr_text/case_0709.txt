@@ -1,0 +1,17 @@
+PATHOLOGY REPORT
+
+Specimen: Breast lumpectomy
+Diagnosis:
+Invasive ductal carcinoma, Nottingham grade III.
+
+Immunohistochemistry:
+ER: negative
+PR: negative
+HER2: negative
+Ki-67: high
+
+Molecular findings:
+BRCA1: No mutation detected
+BRCA2: No mutation detected
+PIK3CA: No mutation detected
+TP53: Mutation detected

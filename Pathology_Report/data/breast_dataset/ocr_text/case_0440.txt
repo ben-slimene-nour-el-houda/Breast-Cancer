@@ -1,0 +1,9 @@
+PATHOLOGY REPORT
+
+Specimen: Breast biopsy
+Diagnosis:
+Benign breast tissue with fibrocystic changes.
+No evidence of malignancy.
+
+Molecular studies:
+Not indicated.
