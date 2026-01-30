@@ -34,14 +34,7 @@ Tawhida does **not perform autonomous diagnosis or prediction**. Instead, it pro
 
 ---
 
-## 3. Platform Access
-
-🔗 **Platform Link:**  
-`[Insert Link Here]`
-
----
-
-## 4. Technologies Used
+## 3. Technologies Used
 
 | Component | Technology |
 |--------|-----------|
@@ -56,7 +49,7 @@ Tawhida does **not perform autonomous diagnosis or prediction**. Instead, it pro
 
 ---
 
-## 5. System Architecture
+## 4. System Architecture
 
 Tawhida is structured into **three layers**:
 
@@ -80,11 +73,11 @@ Tawhida is structured into **three layers**:
 
 ---
 
-## 6. Qdrant Integration (Biological Memory)
+## 5. Qdrant Integration (Biological Memory)
 
 Qdrant acts as the **core similarity engine**, storing multimodal embeddings of historical breast cancer cases.
 
-### 6.1 Modality-Specific Collections
+### 5.1 Modality-Specific Collections
 
 | Collection | Description |
 |----------|-------------|
@@ -100,7 +93,7 @@ Each vector contains:
 
 ---
 
-### 6.2 Retrieval Workflow
+### 5.2 Retrieval Workflow
 
 1. Patient data decomposition (genetic, proteomic, text, image)  
 2. Modality-specific embedding  
@@ -109,7 +102,7 @@ Each vector contains:
 
 ---
 
-## 7. Repository Structure
+## 6. Repository Structure
 
 ```bash
 breast-cancer-repository/
