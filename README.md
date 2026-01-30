@@ -83,8 +83,7 @@ Qdrant acts as the **core similarity engine**, storing multimodal embeddings of 
 |----------|-------------|
 | `genes_collection` | Gene-level mutation embeddings |
 | `proteins_collection` | ER / PR / HER2 profiles |
-| `pathology_images_collection` | Histopathology image embeddings |
-| `pathology_reports_collection` | Clinical text embeddings |
+| `pathology_reports_collection` | Clinical report |
 
 Each vector contains:
 - Case ID  
