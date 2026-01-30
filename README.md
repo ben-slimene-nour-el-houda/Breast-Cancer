@@ -77,7 +77,7 @@ Tawhida is structured into **three layers**:
 ## 5. Qdrant Integration (Biological Memory)
 
 Qdrant acts as the **core similarity engine**, storing multimodal embeddings of historical breast cancer cases.
-![Architecture Tawhida](assets/qdrant.png)
+![Architecture Tawhida](assets/Qdrant.png)
 
 ### 5.1 Modality-Specific Collections
 
