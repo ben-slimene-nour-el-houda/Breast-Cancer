@@ -98,22 +98,6 @@ Each vector contains:
 2. Modality-specific embedding  
 3. Top-K similarity search (cosine similarity)  
 4. RAG-based explanation adapted to user role
-📚 Usage Examples
-For Patients:
-1.Go to patient.html
-2.Upload a pathology report image (JPG/PNG)
-3.Click "Analyser"
-See:
-"Parmi 28 cas similaires dans la base TCGA-BRCA, 11 ont eu un cancer confirmé."
-For Doctors:
-1.Go to doctor.html
-2.Upload image + enter: "ER+, PR-, HER2-, BRCA1+"
-3.Click "Analyser"
-See detailed summary with:
-BRCA1/2 mutation counts
-ER/PR/HER2/Ki67 status
-NCCN v2025 recommendation
-Clear disclaimer: "This analysis is based on public TCGA-BRCA data and is not a diagnosis."
 
 ---
 
@@ -127,21 +111,4 @@ breast-cancer-repository/
 ├── pathology_report/
 └── Interface/
 
----
-## 7. 📦 Requirements / Dependencies
 
-Backend (backend/requirements.txt)
-txt
-123456789
-fastapi==0.110.0
-uvicorn==0.27.0
-qdrant-client==1.10.0
-torch==2.4.0
-transformers==4.40.0
-pillow==10.3.0
-python-dotenv==1.0.1
-sentencepiece==0.2.0
-numpy==1.26.0
-Frontend
-Pure HTML/CSS/JS — no dependencies
-Uses modern CSS (Flexbox/Grid), responsive design, Inter font (Google Fonts)
