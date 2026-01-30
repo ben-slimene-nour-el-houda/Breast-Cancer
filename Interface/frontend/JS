@@ -1,0 +1,87 @@
+// --- Configuration & Constantes ---
+const CONFIG = {
+    DASHBOARD_URL: 'doctor-dashboard.html',
+    MIN_PASSWORD_LENGTH: 6
+};
+
+// --- Sélecteurs ---
+const loginForm = document.getElementById('loginForm');
+const passwordInput = document.getElementById('password');
+const passwordToggle = document.getElementById('passwordToggle');
+const toastElement = document.getElementById('toast');
+
+// --- Fonctions Utilitaires ---
+function showToast(message, type = 'success') {
+    toastElement.textContent = message;
+    toastElement.className = `toast show ${type === 'error' ? 'error' : 'success'}`;
+    
+    setTimeout(() => {
+        toastElement.classList.remove('show');
+    }, 3000);
+}
+
+function toggleLoading(isLoading) {
+    const btn = document.getElementById('loginBtn');
+    const text = btn.querySelector('.btn-text');
+    const spinner = btn.querySelector('.spinner');
+    
+    btn.disabled = isLoading;
+    text.style.display = isLoading ? 'none' : 'block';
+    spinner.style.display = isLoading ? 'block' : 'none';
+}
+
+// --- Gestionnaires d'Événements ---
+
+// Visibilité du mot de passe
+passwordToggle.addEventListener('click', () => {
+    const isPassword = passwordInput.type === 'password';
+    passwordInput.type = isPassword ? 'text' : 'password';
+    passwordToggle.textContent = isPassword ? 'visibility' : 'visibility_off';
+});
+
+// Soumission du formulaire
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value.trim();
+    const password = passwordInput.value;
+    
+    // Reset Erreurs
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('passwordError').textContent = '';
+
+    // Validation
+    let isValid = true;
+    if (!email.includes('@')) {
+        document.getElementById('emailError').textContent = 'Email invalide';
+        isValid = false;
+    }
+    if (password.length < CONFIG.MIN_PASSWORD_LENGTH) {
+        document.getElementById('passwordError').textContent = `Minimum ${CONFIG.MIN_PASSWORD_LENGTH} caractères`;
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+    toggleLoading(true);
+
+    try {
+        // --- LOGIQUE FIREBASE ICI ---
+        // Exemple: await firebase.auth().signInWithEmailAndPassword(email, password);
+        
+        showToast('Connexion réussie !');
+        setTimeout(() => {
+            window.location.href = CONFIG.DASHBOARD_URL;
+        }, 1000);
+
+    } catch (error) {
+        showToast(error.message, 'error');
+        toggleLoading(false);
+    }
+});
+
+// Mot de passe oublié
+document.getElementById('resetPasswordLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Lien de réinitialisation envoyé !');
+});
