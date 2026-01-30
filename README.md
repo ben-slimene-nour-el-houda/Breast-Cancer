@@ -1,49 +1,120 @@
-# Breast Cancer Repository
-
-The repository is organized into **three main modules** based on biological data types:
-
----
-
-### 1. 🧬 Gene Mutation (`gene_mutation/`)
-
-**Data Types:**  
-- **Point Mutations:** Affected genes and mutation types  
-- **DNA Sequences:** Raw nucleotide sequences (A, T, G, C) linked to mutations  
-- **Genomic Metrics:** FGA (Fraction Genome Altered) for genome instability  
-- **Pathways:** Impacted biological processes  
-
-**Models & Techniques:**  
-  - **BioBERT (dmis-lab/biobert-v1.1):** Encodes textual mutation descriptions, pretrained on biomedical texts  
-  - **K-mer Encoding (k=3):** Converts DNA sequences into 3-mer frequency vectors  
-  - **Multimodal Embedding:** Concatenates text, genomic, and numeric vectors into a single patient profile  
+# 🩺 Tawhida  
+## Multimodal Breast Cancer Risk Assessment System
 
 ---
 
-### 2. 🧪 Protein Mutation (`protein_mutation/`)
+## 1. Project Overview
 
-**Data Types:**  
-- **Hormone Receptors:** ER, PR, HER2 status  
-- **Molecular Subtypes:** PAM50 classifications (Luminal A/B, Her2-enriched, Basal-like)  
-- **Tumor Stages:** TNM scale (T1, T2…)  
+**Tawhida** is a **multimodal, retrieval-based clinical decision support system (CDSS)** designed to assess **breast cancer risk** by integrating **genetic, proteomic, clinical text, and pathology image data**.
 
-**Models & Techniques:**  
-  - **Clinical NLP Conversion:** Protein data converted into explanatory paragraphs for LLMs  
-  - **all-MiniLM-L6-v2:** Sentence transformer producing 384-dim vectors for Qdrant search  
+The system focuses on **non-invasive, pre-imaging risk stratification**, aiming to **reduce unnecessary exposure to ionizing radiation (mammography)**—especially for **young women** and **high-risk populations**.
+
+Tawhida does **not perform autonomous diagnosis or prediction**. Instead, it provides **evidence-grounded similarity-based insights** to support clinicians and inform patients.
 
 ---
-### 3. 📄 Pathology Report (`pathology_report/`)
 
-**Data Types:**
+## 2. Key Objectives
 
-- **Clinical text reports:** pathology notes, histology descriptions, biopsy findings
-- **Structured metadata:** patient IDs, sample IDs, slide images, report dates
-- **Image data:** microscopy or histopathology images
+### 🎯 Risk Stratification
+- **Screening**: Early identification of asymptomatic women at risk  
+- **Follow-up (Suivi)**: Monitoring recurrence risk in breast cancer survivors  
 
-**Models & Techniques:**
+### 🧬 Multimodal Integration
+- Genetic mutations (e.g. **BRCA1 / BRCA2**)  
+- Protein biomarkers (**ER, PR, HER2**)  
+- Pathology reports and histopathology images  
 
-- **CLIP (`openai/clip-vit-base-patch32`):** génère des embeddings multimodaux pour les images de pathologie
-- **Text preprocessing:** tokenisation et nettoyage des textes des rapports
-- **Vector database (Qdrant):** stockage des embeddings 512-dim pour recherche sémantique
-- **Multimodal retrieval:** recherche par texte, image ou embeddings combinés
+### 🔍 Explainability
+- **Doctor Mode**: Similarity scores, modality contributions, biomedical rationale  
+- **Patient Mode**: Qualitative risk tiers (*Low / Moderate / High*)  
 
-  
+### ☢️ Radiation Reduction
+- Reduce over-screening  
+- Limit cumulative radiation exposure  
+
+---
+
+## 3. Platform Access
+
+🔗 **Platform Link:**  
+`[Insert Link Here]`
+
+---
+
+## 4. Technologies Used
+
+| Component | Technology |
+|--------|-----------|
+| Vector Database | **Qdrant (Cloud)** |
+| Retrieval | **RAG (Retrieval-Augmented Generation)** |
+| LLM Orchestration | Risk LLM + RAG LLM |
+| Indexing | **HNSW** |
+| Similarity Metric | **Cosine Similarity** |
+| Image Embeddings | **CLIP (ViT-B/32)** |
+| Text Embeddings | **BioBERT**, **all-MiniLM-L6-v2** |
+| Dataset | **TCGA-BRCA** |
+
+---
+
+## 5. System Architecture
+
+Tawhida is structured into **three layers**:
+
+### 🖥️ Frontend Layer
+- Secure web interface  
+- Role-based access:
+  - Doctor dashboard
+  - Patient interface  
+
+### 🧠 Inference & RAG Layer
+- Risk Evaluation Engine  
+- API orchestration  
+- Specialized LLMs:
+  - Risk LLM
+  - RAG LLM  
+
+### 🗄️ Data Layer
+- Qdrant Vector Database  
+- Medical Knowledge Base  
+- Patient Records  
+
+---
+
+## 6. Qdrant Integration (Biological Memory)
+
+Qdrant acts as the **core similarity engine**, storing multimodal embeddings of historical breast cancer cases.
+
+### 6.1 Modality-Specific Collections
+
+| Collection | Description |
+|----------|-------------|
+| `genes_collection` | Gene-level mutation embeddings |
+| `proteins_collection` | ER / PR / HER2 profiles |
+| `pathology_images_collection` | Histopathology image embeddings |
+| `pathology_reports_collection` | Clinical text embeddings |
+
+Each vector contains:
+- Case ID  
+- Modality metadata  
+- Dataset traceability  
+
+---
+
+### 6.2 Retrieval Workflow
+
+1. Patient data decomposition (genetic, proteomic, text, image)  
+2. Modality-specific embedding  
+3. Top-K similarity search (cosine similarity)  
+4. RAG-based explanation adapted to user role  
+
+---
+
+## 7. Repository Structure
+
+```bash
+breast-cancer-repository/
+│
+├── gene_mutation/
+├── protein_mutation/
+├── pathology_report/
+└── Interface/
