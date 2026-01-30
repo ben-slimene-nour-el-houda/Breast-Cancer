@@ -52,6 +52,7 @@ Tawhida does **not perform autonomous diagnosis or prediction**. Instead, it pro
 ## 4. System Architecture
 
 Tawhida is structured into **three layers**:
+![Architecture Tawhida](assets/architecture.jpg)
 
 ### 🖥️ Frontend Layer
 - Secure web interface  
